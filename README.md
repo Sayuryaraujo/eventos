@@ -7,7 +7,7 @@ Projeto didático da Aula 05 — Prisma Seed, desenvolvido com Node.js, Express,
 - Node.js 20.19+
 - MySQL em execução (XAMPP)
 - Banco de dados `eventos`
-
+-git clone do meu projeto entrar na pasta eventos_climaticos
 ## 1. Configurar o banco
 
 Criar o banco de dados:

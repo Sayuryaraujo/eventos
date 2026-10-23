@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos Climáticos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="loginView" class="login-page">
+    <section class="login-card">
+      <div class="logo">EC</div>
+      <p class="eyebrow">PAINEL DE MONITORAMENTO</p>
+      <h1>Eventos Climáticos</h1>
+      <p class="muted">Entre para gerenciar os registros de eventos extremos.</p>
+      
+      <form id="loginForm">
+        <!-- Campo de Nome (aparece apenas no modo de cadastro) -->
+        <div id="nameFieldContainer" class="hidden">
+          <label for="nome">Nome</label>
+          <input id="nome" name="nome" type="text" placeholder="Seu nome completo">
+        </div>
+
+        <label for="email">E-mail</label>
+        <input id="email" name="email" type="email" placeholder="ana@email.com" required>
+        
+        <label for="senha">Senha</label>
+        <input id="senha" name="senha" type="password" placeholder="Sua senha" required>
+        
+        <button type="submit" id="submitButton" class="primary full">Entrar</button>
+        
+        <!-- Link para alternar entre Entrar e Criar Conta -->
+        <p class="muted" style="text-align: center; margin-top: 15px;">
+          <span id="toggleText">Não tem uma conta?</span> 
+          <a href="#" id="toggleMode" style="color: var(--primary, #6b46c1); text-decoration: underline; font-weight: bold;">Criar conta</a>
+        </p>
+
+        <p id="loginMessage" class="message" role="status"></p>
+      </form>
+
+      <details class="demo">
+        <summary>Acessos para demonstração</summary>
+        <p>ana@email.com · senha123</p>
+        <p>maria@email.com · senha123</p>
+        <p>joao@email.com · senha123</p>
+        <p>paula@email.com · senha123</p>
+        <p>pedro@email.com · senha123</p>
+      </details>
+    </section>
+  </main>
+
+  <div id="appView" class="app hidden">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">EC</span><span>Eventos Climáticos</span></a>
+      <div class="user-area"><span id="userName"></span><button id="logoutButton" class="secondary">Sair</button></div>
+    </header>
+    <main class="content">
+      <section class="welcome">
+        <div><p class="eyebrow">VISÃO GERAL</p><h1>Registros climáticos</h1><p class="muted">Cadastre e acompanhe eventos climáticos extremos.</p></div>
+        <button id="newEventButton" class="primary">+ Novo evento</button>
+      </section>
+      <section class="stats">
+        <article class="stat-card"><span>Total de eventos</span><strong id="totalEvents">0</strong></article>
+        <article class="stat-card"><span>Tipos registrados</span><strong id="totalTypes">0</strong></article>
+        <article class="stat-card"><span>Cidades afetadas</span><strong id="totalCities">0</strong></article>
+      </section>
+      <section class="panel">
+        <div class="panel-heading"><div><h2>Eventos cadastrados</h2><p class="muted">Os registros de todos os usuários estão listados abaixo.</p></div><button id="refreshButton" class="secondary">Atualizar</button></div>
+        <div id="eventsMessage" class="message" role="status"></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cidade</th><th>Tipo</th><th>Temperatura</th><th>Data</th><th>Responsável</th><th>Impacto</th><th>Ações</th></tr></thead>
+            <tbody id="eventsBody"></tbody>
+          </table>
+        </div>
+        <p id="emptyState" class="empty hidden">Nenhum evento cadastrado ainda.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="eventDialog">
+    <form id="eventForm" method="dialog">
+      <div class="dialog-heading"><div><p class="eyebrow">REGISTRO</p><h2 id="dialogTitle">Novo evento</h2></div><button type="button" id="closeDialog" class="close-button" aria-label="Fechar">×</button></div>
+      <input id="eventId" type="hidden">
+      <label for="cidade">Cidade</label><input id="cidade" required maxlength="100" placeholder="Ex.: Amparo">
+      <label for="tipoEvento">Tipo de evento</label>
+      <select id="tipoEvento" required>
+        <option value="">Selecione</option><option>Tempestade</option><option>Queimada</option><option>Vendaval</option><option>Geada</option><option>Enchente</option><option>Seca</option><option>Baixa umidade relativa do ar</option><option>Tempestade magnética</option><option>Outro</option>
+      </select>
+      <label for="temperaturaMaxima">Temperatura máxima (°C) — opcional</label><input id="temperaturaMaxima" type="number" step="0.1" placeholder="Ex.: 34.2">
+      <label for="dataEvento">Data do evento</label><input id="dataEvento" type="date">
+      <label for="nivelImpacto">Nível / descrição do impacto</label><textarea id="nivelImpacto" required maxlength="255" rows="3" placeholder="Descreva os impactos registrados"></textarea>
+      <p id="formMessage" class="message"></p>
+      <div class="dialog-actions"><button type="button" id="cancelDialog" class="secondary">Cancelar</button><button type="submit" class="primary">Salvar evento</button></div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

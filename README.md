@@ -3,11 +3,14 @@
 Projeto didático da Aula 05 — Prisma Seed, desenvolvido com Node.js, Express, Prisma 7, MySQL e frontend em HTML, CSS e JavaScript.
 
 ## Requisitos
+
 - Node.js 20.19+
 - MySQL em execução (XAMPP)
 - Banco de dados `eventos`
 
 ## 1. Configurar o banco
+
+Criar o banco de dados:
 
 ```sql
 CREATE DATABASE eventos;
@@ -34,6 +37,8 @@ DB_NAME="eventos"
 ```
 
 ## 3. Prisma e Seed
+
+Execute os comandos dentro da pasta `api`:
 
 ```bash
 npx prisma generate
@@ -68,7 +73,7 @@ Todos utilizam a senha `senha123`.
 
 ## 6. Rotas para o Insomnia
 
-Base URL: `http://localhost:3000`
+**Base URL:** `http://localhost:3000`
 
 ### Usuários
 
@@ -93,10 +98,64 @@ Base URL: `http://localhost:3000`
 
 Organize as requisições no Insomnia em grupos de **Usuários** e **Eventos**.
 
-## Funcionalidades
-- Cadastro e login.
+## 7. Funcionalidades
+
+- Cadastro e login de usuários.
 - CRUD de eventos climáticos.
 - Associação de eventos aos usuários.
 - Seed com 5 usuários e 8 eventos.
 
-**Observação:** confirme se as rotas documentadas correspondem às implementadas nos arquivos do backend.
+## 8. Prints do projeto
+
+### Print 1 —Senha invalida mas email valido
+
+  
+
+  
+
+### Print 2 — Senha valida  e email tbm
+
+  
+  
+
+  
+
+### Print 3 — Todos os eventos cadastrado ate o momento
+  
+  
+  
+
+### Print 4 — A visão de cima
+
+  
+  
+  
+
+### Print 5 — Cadastro de evento
+
+  
+  
+  
+
+### Print 6 — Todos os eventos anteriores mais esse novo
+  
+  
+  
+
+### Print 7 — Login
+
+  
+  
+  
+
+### Print 8 — Demostração
+
+  
+
+  
+  
+  
+
+## Observação final
+
+Confirme se as rotas documentadas correspondem às implementadas nos arquivos do backend e se os testes foram executados corretamente.

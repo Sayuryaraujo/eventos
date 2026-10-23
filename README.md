@@ -116,41 +116,44 @@ Organize as requisições no Insomnia em grupos de **Usuários** e **Eventos**.
 
   
 ![Conta](assets/conta.png)
-  
 
+  
 ### Print 3 — Todos os eventos cadastrado ate o momento
-  
-  
-  
+
+   ![Eventos atualizados](assets/todoantigo.png)
+
 
 ### Print 4 — A visão de cima
 
   
-  
+  ![Visão geral](assets/partedecima.png)
   
 
 ### Print 5 — Cadastro de evento
 
   
-  
+  ![Cadastro de evento](assets/registro.png)
   
 
 ### Print 6 — Todos os eventos anteriores mais esse novo
   
   
   
+  ![Eventos cadastrados](assets/eventoscadas2.png)
+
+  
 
 ### Print 7 — Login
 
   
-  
+  ![Tela de login](assets/login.png)
   
 
 ### Print 8 — Demostração
 
   
-![Demostracao](assets/demonstracao.png)
-  
+![Demonstração](assets/demostracao.png)  
+
 
 ## Observação final
 

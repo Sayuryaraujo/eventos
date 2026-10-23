@@ -1,24 +1,28 @@
 # Eventos Climáticos — Projeto Full Stack
 
-Projeto didático para a Aula 05 — Prisma Seed. Backend em Node.js + Express + Prisma 7 + MySQL/MariaDB; frontend em HTML, CSS e JavaScript puro.
+Projeto didático da Aula 05 — Prisma Seed, desenvolvido com Node.js, Express, Prisma 7, MySQL e frontend em HTML, CSS e JavaScript.
 
 ## Requisitos
-- Node.js 20.19+ (recomendado Node 22)
-- MySQL/MariaDB em execução (por exemplo, MySQL do XAMPP)
-- Banco de dados `eventos` criado no MySQL
+- Node.js 20.19+
+- MySQL em execução (XAMPP)
+- Banco de dados `eventos`
 
-## 1. Preparar o banco
-No phpMyAdmin ou cliente MySQL, execute:
+## 1. Configurar o banco
+
 ```sql
 CREATE DATABASE eventos;
 ```
 
-## 2. Configurar a API
-Abra um terminal na pasta `api`:
+## 2. Instalar e configurar a API
+
+No terminal, dentro da pasta `api`:
+
 ```bash
 npm install
 ```
-Copie `.env.example` para `.env` e ajuste usuário/senha/porta do seu MySQL. Exemplo local do XAMPP:
+
+Configure o arquivo `.env`:
+
 ```env
 PORT=3000
 DATABASE_URL="mysql://root@localhost:3306/eventos"
@@ -28,100 +32,71 @@ DB_USER="root"
 DB_PASSWORD=""
 DB_NAME="eventos"
 ```
-Se seu MySQL tiver senha, informe-a em `DATABASE_URL` e `DB_PASSWORD`.
 
-Depois execute:
+## 3. Prisma e Seed
+
 ```bash
 npx prisma generate
 npx prisma migrate dev --name init
 npx prisma db seed
 npm run dev
 ```
-A API fica em `http://localhost:3000`. A rota `/` mostra as rotas disponíveis. Se você já criou a migração e executou o seed, não precisa repetir esses dois comandos.
 
-## 3. Abrir o site
-Com a API rodando, abra `web/index.html` no navegador. Se o navegador bloquear requisições locais por abrir o arquivo diretamente, rode um servidor estático dentro de `web`, por exemplo:
+Se a migração e o seed já foram executados, não precisa repeti-los.
+
+A API estará disponível em `http://localhost:3000`.
+
+**Atenção:** o seed apaga usuários e eventos existentes antes de inserir os dados de exemplo.
+
+## 4. Frontend
+
+Abra `web/index.html` no navegador. Se necessário, execute dentro da pasta `web`:
+
 ```bash
 npx serve .
 ```
-Depois acesse o endereço informado pelo comando. A API permite CORS para desenvolvimento.
 
-## Login de demonstração
-- ana@email.com / senha123
-- maria@email.com / senha123
-- joao@email.com / senha123
-- paula@email.com / senha123
-- pedro@email.com / senha123
+## 5. Login de demonstração
 
-## Rotas para testar no Insomnia
+Todos utilizam a senha `senha123`.
+
+- ana@email.com
+- maria@email.com
+- joao@email.com
+- paula@email.com
+- pedro@email.com
+
+## 6. Rotas para o Insomnia
+
 Base URL: `http://localhost:3000`
 
 ### Usuários
-| Operação | Método | URL |
-|---|---|---|
-| Cadastrar | POST | `/usuario/cadastrar` |
-| Login | POST | `/usuario/login` |
-| Listar | GET | `/usuario/listar` |
-| Buscar por ID | GET | `/usuario/buscar/:id` |
-| Atualizar | PUT | `/usuario/atualizar/:id` |
-| Excluir | DELETE | `/usuario/excluir/:id` |
 
-Exemplo de Body para cadastrar:
-```json
-{
-  "nome": "Maria Silva",
-  "email": "maria.teste@example.com",
-  "senha": "Teste123!"
-}
-```
-
-Exemplo de Body para login:
-```json
-{
-  "email": "ana@email.com",
-  "senha": "senha123"
-}
-```
-
-Exemplo de Body para atualizar (todos os campos são opcionais, mas informe pelo menos um):
-```json
-{
-  "nome": "Maria Silva Atualizada",
-  "email": "maria.teste@example.com"
-}
-```
+| Método | Rota |
+|---|---|
+| POST | `/usuario/cadastrar` |
+| POST | `/usuario/login` |
+| GET | `/usuario/listar` |
+| GET | `/usuario/buscar/:id` |
+| PUT | `/usuario/atualizar/:id` |
+| DELETE | `/usuario/excluir/:id` |
 
 ### Eventos
-| Operação | Método | URL |
-|---|---|---|
-| Listar | GET | `/evento` |
-| Buscar por ID | GET | `/evento/:id` |
-| Cadastrar | POST | `/evento` |
-| Atualizar | PUT | `/evento/:id` |
-| Excluir | DELETE | `/evento/:id` |
 
-Exemplo de Body para cadastrar evento:
-```json
-{
-  "usuarioId": 1,
-  "cidade": "Amparo",
-  "tipoEvento": "Tempestade",
-  "temperaturaMaxima": 34.5,
-  "nivelImpacto": "Alagamentos e queda de árvores"
-}
-```
+| Método | Rota |
+|---|---|
+| POST | `/evento/cadastrar` |
+| GET | `/evento/listar` |
+| GET | `/evento/buscar/:id` |
+| PUT | `/evento/atualizar/:id` |
+| DELETE | `/evento/excluir/:id` |
 
-Para editar um evento, envie `cidade`, `tipoEvento` e `nivelImpacto`, e opcionalmente `temperaturaMaxima` e `data`.
+Organize as requisições no Insomnia em grupos de **Usuários** e **Eventos**.
 
 ## Funcionalidades
-- Login validado no banco
-- Nome do usuário logado no cabeçalho
-- Botão Sair
-- CRUD de eventos climáticos
-- Listagem de eventos vinculados ao usuário logado
-- Seed com 5 usuários e 8 eventos de exemplo
+- Cadastro e login.
+- CRUD de eventos climáticos.
+- Associação de eventos aos usuários.
+- Seed com 5 usuários e 8 eventos.
 
-## Observações importantes
-- O Seed apaga os eventos e usuários existentes antes de inserir os dados de exemplo. Execute apenas em banco de teste.
-- As senhas do Seed são armazenadas com hash bcrypt.
-- Este é um projeto escolar para execução local, não uma solução pronta para produção. Para produção, use HTTPS, variáveis seguras e autenticação/token com expiração e proteção adicional.
+**Observação:** confirme se as rotas documentadas correspondem às implementadas nos arquivos do backend.
